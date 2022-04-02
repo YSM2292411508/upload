@@ -24,7 +24,8 @@ springmvc没有系统学习学习，这也是我的不足之处。
 
 ### 项目截图
 
-![image-20220402002656881](C:\Users\yuanshengming\AppData\Roaming\Typora\typora-user-images\image-20220402002656881.png)
+![image](https://user-images.githubusercontent.com/99107381/161363945-ae97b808-8e91-414b-a25e-e78aeaa9b07e.png)
+
 
 点击上传文件
 
