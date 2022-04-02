@@ -29,5 +29,6 @@ springmvc没有系统学习学习，这也是我的不足之处。
 
 点击上传文件
 
-![image-20220402002755198](C:\Users\yuanshengming\AppData\Roaming\Typora\typora-user-images\image-20220402002755198.png)
+![image](https://user-images.githubusercontent.com/99107381/161363981-89b32538-b63c-45bf-b9f6-4db5ac31a906.png)
+
 
