@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传文件</title>
+    <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+    <!-- 头部区域开示 -->
+    <div class="header w">
+        <!-- logo部分 -->
+        <div class="logo">
+            <img src="./images/537.png" alt="">
+        </div>
+    </div>
+    <div class="banner">
+        <div class="w">
+            <div class="course">
+                <h2>联系本作者</h2>
+                 <img src="./images/wx.jpg" alt="">
+            </div>
+            <div class="ws">
+                <form action="/uploadfile/AcceptData" method="post" enctype="multipart/form-data" onSubmit="return check();">
+                    <div class="tupian">
+                        <span>学习图片</span>
+                        <input type="file"  accept="image/png,image/jpg" id="tupian" name="tupian">
+                        <label for="tupian" class="xiugaifile">图片上传</label>
+                        <span class="spantupian" id="spantupian">请上传图片</span>
+                    </div>
+                    <div class="wenjian">
+                        <span>学习资料</span>
+                        <input type="file" id="wenjian" name="wenjian">
+                        <label for="wenjian" class="xiugaifile">资料上传</label>
+                        <span class="spanwenjian" id="spanwenjian">请上传文件</span>
+                    </div>
+                    <div class="jieshao">
+                        <span>资料介绍</span>
+                        <input type="text" placeholder="1~20字左右的介绍" id="jieshao" name="jieshao">
+                        <span class="spanjieshao" id="spanjieshao">请正确输入介绍</span>
+                    </div>
+                    <div class="lianjie">
+                        <span>学习的视频链接</span>
+                        <input type="text" placeholder="视频链接应该为http://格式" id="lianjie" name="lianjie">
+                        <span class="spanlianjie" id="spanlianjie">请正确输入视频链接</span>
+                    </div>
+                    <div class="mingzi">
+                        <span>请输入你的名字</span>
+                        <input type="text" placeholder="名字为1~3个字" id="mingzi" name="mingzi">
+                        <span class="spanmingzi" id="spanmingzi">请正确输入名字</span>
+                    </div>
+                    <input type="submit" value="提交" class="tijiao">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--头部区域结束  -->
+    <!-- 底部代码开始 -->
+    <div class="footer">
+        <div class="w">
+            <div class="copyright">
+                <img src="./images/537.png" alt="">
+                <p>
+                    本页面可以下载一些常用的软件，方便大家学习，使学习更快乐
+                    <br>
+                    还有很多知识等待我去探索，让我们共同努力，一起加油。
+                </p>
+            </div>
+            <div class="links">
+                <dl>
+                    <dt>关于本网站</dt>
+                    <dd><a href="#">关于</a></dd>
+                    <dd><a href="#">管理人员</a></dd>
+                    <dd><a href="#">工作机会</a></dd>
+                    <dd><a href="#">客户意见</a></dd>
+                    <dd><a href="#">帮助</a></dd>
+                </dl>
+                <dl>
+                    <dt>关于本网站</dt>
+                    <dd><a href="#">关于</a></dd>
+                    <dd><a href="#">管理人员</a></dd>
+                    <dd><a href="#">工作机会</a></dd>
+                    <dd><a href="#">客户意见</a></dd>
+                    <dd><a href="#">帮助</a></dd>
+                </dl>
+                <dl>
+                    <dt>关于本网站</dt>
+                    <dd><a href="#">关于</a></dd>
+                    <dd><a href="#">管理人员</a></dd>
+                    <dd><a href="#">工作机会</a></dd>
+                    <dd><a href="#">客户意见</a></dd>
+                    <dd><a href="#">帮助</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+     <!-- 底部代码结束 -->
+     <script>
+         var jieshao=document.getElementById('jieshao');
+         var lianjie=document.getElementById('lianjie');
+         var mingzi=document.getElementById('mingzi');
+         var tupian=document.getElementById('tupian');
+         var wenjian=document.getElementById('wenjian');
+
+         var spanjieshao=document.getElementById('spanjieshao');
+         var spanlianjie=document.getElementById('spanlianjie');
+         var spanmingzi=document.getElementById('spanmingzi');
+         var spantupian=document.getElementById('spantupian');
+         var spanwenjian=document.getElementById('spanwenjian');
+
+
+         tupian.onblur=function(){
+             if(tupian.files[0]===undefined){
+                 spantupian.style.visibility='visible';
+             }else{
+                 spantupian.style.visibility='hidden';
+             }
+         }
+         wenjian.onblur=function(){
+             if(wenjian.files[0]===undefined){
+                 spanwenjian.style.visibility='visible';
+             }else{
+                 spanwenjian.style.visibility='hidden';
+             }
+         }
+         jieshao.onblur=function(){
+             if(this.value.length<=20 && this.value.length>1){
+                 spanjieshao.style.visibility='hidden';
+             }else{
+                 spanjieshao.style.visibility='visible';
+             }
+         }
+         mingzi.onblur=function(){
+             if(this.value.length<=3 && this.value.length>1){
+                 spanmingzi.style.visibility='hidden';
+             }else{
+                 spanmingzi.style.visibility='visible';
+             }
+         }
+         lianjie.onblur=function(){
+             var str=lianjie.value;
+             var regex = /http(.*?):/;
+             if(!regex.test(str)){
+                 spanlianjie.style.visibility='visible';
+             }else{
+                 spanlianjie.style.visibility='hidden';
+             }
+         }
+
+         function check(){
+             if(jieshao.value==="" || mingzi.value==="" || lianjie.value==="" || tupian.files[0]===undefined ||wenjian.files[0]===undefined){
+                 alert('请检查文件和内容是否正确');
+                 return false;
+             }else{
+                 return true;
+             }
+         }
+     </script>
+</body>
+</html>

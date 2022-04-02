@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:JDBC.properties" />
+    </bean>
+
+    <!--声明数据源DataSource-->
+    <bean id="myDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbcurl}"/>
+        <property name="username" value="${jdbcusername}"/>
+        <property name="password" value="${jdbcpasswoed}"/>
+    </bean>
+
+
+    <!--声明SqlSessionFactoryBean,在这个类的内部，创建SqlSessionFactory-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource" />
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+    </bean>
+
+    <!--声明MapperScannerConfiguration-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定SqlSessionFactory对象的名称-->
+        <property name="sqlSessionFactoryBeanName" value="factory"/>
+        <!--指定基本包，dao接口所在的包名-->
+        <property name="basePackage" value="com.yuan.Dao"/>
+    </bean>
+
+
+    <bean id="select" class="com.yuan.Service.lmpl.AllServiceImpl">
+        <property name="liDao" ref="liDao"/>
+    </bean>
+
+</beans>
